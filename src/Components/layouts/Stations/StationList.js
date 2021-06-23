@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Box, Image, SimpleGrid,Flex } from "@chakra-ui/react";
 import StationCard from "./StationCard";
-import Stepper from 'react-stepper-horizontal'
+
 
 function StationList() {
   const [list, setList] = useState([]);

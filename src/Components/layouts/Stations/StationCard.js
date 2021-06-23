@@ -90,8 +90,9 @@ function StationCard({ station,Stepper }) {
           >
             ตกลง
           </Button> */}
-          <AmountInput size="xs"  maxW={16}  value={value} setValue={setValue} />
+          
         </ListItem>
+        <AmountInput size="xs"  maxW={16}  value={value} setValue={setValue} />
       </UnorderedList>  
     </Flex>
    

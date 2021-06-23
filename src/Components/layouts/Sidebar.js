@@ -25,20 +25,25 @@ function Sidebar() {
       const forTwo = changeMoney / 2;
       const modTwo = changeMoney % 2;
       return (<>
-        <Text>หรียญ 2 บาท:{Math.floor(forTwo)}</Text>
-        <Text>เหรียญบาท {modTwo}</Text>
+         <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px">
+         {Math.floor(forTwo) ===0? null:<Text>เหรียญ 2 บาท: {Math.floor(forTwo)}</Text>}
+        {modTwo === 0 ? null: <Text>เหรียญ 1 บาท: {modTwo}</Text>}
+        </Box>
         </>
       );
-    } else if (changeMoney > 5 && changeMoney <= 10) {
+    } else if (changeMoney > 5 && changeMoney < 10) {
       if (changeMoney / 5 >= 0) {
         const changeFive = changeMoney / 5;
         const modFive = changeMoney % 5;
         const forTwo = modFive / 2;
         const modTwo = modFive % 2;
         return (
-          <>
-          <Text>เหรียญ 5 บาท: {Math.floor(changeFive)}</Text> 
-          <Text>เหรียญ 2 บาท:{Math.floor(forTwo)},เหรียญบาท:{modTwo} </Text>
+          <> 
+          <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px">
+          {Math.floor(changeFive) ===0? null:<Text>เหรียญ 5 บาท: {Math.floor(changeFive)}</Text> }
+          {Math.floor(forTwo) ===0? null:<Text>เหรียญ 2 บาท: {Math.floor(forTwo)}</Text>}
+          {modTwo ===0?null: <Text>เหรียญ 1 บาท: {modTwo} </Text>}
+          </Box>
           </>
         );
       }
@@ -46,26 +51,38 @@ function Sidebar() {
       if (changeMoney / 10 >= 0) {
         const changeTen = changeMoney / 10;
         const modTen = changeMoney % 10;
-        const forTwo = modTen / 2;
-        const modTwo = modTen % 2;
+        const forFive = modTen/5;
+        const modFive = modTen %5;
+        const forTwo = modFive / 2;
+        const modTwo = modFive % 2;
 
         if (modTen % 2 === 0) {
           const divTwo = modTen / 2;
           return (
             <>
-            <Text>เหรียญ 10 บาท: {Math.floor(changeTen)} </Text>
-            <Text>เหรียญ 2 บาท:{divTwo} </Text>
+             <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px">
+             {Math.floor(changeTen) ===0? null:<Text>เหรียญ 10 บาท: {Math.floor(changeTen)}</Text>}
+             {divTwo===0?null:<Text>เหรียญ 2 บาท: {divTwo} </Text>}
+            </Box>
              </>
           );
         }
+
         return (
           <>
-          <Text>เหรียญ 10 บาท: {Math.floor(changeTen)}</Text>
-          <Text>เหรียญ2บาท: {Math.floor(forTwo)}</Text>
-          <Text>เหรียญบาท {modTwo}</Text>
+          <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px">
+          {Math.floor(changeTen) ===0? null:<Text>เหรียญ 10 บาท: {Math.floor(changeTen)}</Text>}
+          {Math.floor(forFive) ===0? null:<Text>เหรียญ 5 บาท: {Math.floor(forFive)}</Text> }
+          {Math.floor(forTwo) ===0? null:<Text>เหรียญ 2 บาท: {Math.floor(forTwo)}</Text>}
+          {modTwo===0? null:<Text>เหรียญ 1 บาท: {modTwo}</Text>}
+          </Box>
           </>
         );
       }
+      return (
+         <>
+        <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px"> ShowMoney </Box>
+        </>)
     }
   }
   console.log(typeof totalPrice);
@@ -74,140 +91,130 @@ function Sidebar() {
     if (totalPrice > 0 && totalPrice <= 20) {
       if (totalPrice / 20 === 0) {
         const forTwenty = totalPrice / 20;
-        return <Text>แบงค์ 20: {forTwenty}</Text>;
+        return  (<Box border="1px solid black" shadow="lg" m={4} p={2} width="300px"><Text>แบงค์ 20: {forTwenty}</Text></Box>)
       } else {
         const forTen = totalPrice / 10;
         const modTen = totalPrice % 10;
-        const forTwo = modTen / 2;
-        const modTwo = modTen % 2;
+        const forFive = modTen/5;
+        const modFive = modTen%5;
+        const forTwo = modFive / 2;
+        const modTwo = modFive % 2;
         return (<>
-          <Text>เหรียญ 10: {Math.floor(forTen)} </Text>
-          <Text>เหรียญ 2 บาท: {Math.floor(forTwo)}</Text> 
-          <Text>เหรียญบาท: {modTwo}</Text></>
+          <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px">
+          {Math.floor(forTen) ===0? null:<Text>เหรียญ 10 บาท: {Math.floor(forTen)} </Text>}
+          {Math.floor(forFive) ===0? null:<Text>เหรียญ 5 บาท: {Math.floor(forFive)}</Text> }
+          {Math.floor(forTwo) ===0? null:<Text>เหรียญ 2 บาท: {Math.floor(forTwo)}</Text> }
+          {modTwo ===0? null:<Text>เหรียญ 1 บาท: {modTwo}</Text>}
+          </Box>
+          </>
          
         );
       }
-    } else if (totalPrice > 20 && totalPrice <= 50) {
+    } else if (totalPrice > 20 && totalPrice < 50) {
       if (totalPrice % 20 === 0) {
         const forTwenty = totalPrice / 20;
-        return <Text>แบงค์ 20: {forTwenty}</Text>;
+        return  <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px"><Text>แบงค์ 20: {forTwenty}</Text></Box>
       } else {
         const forTwenty = totalPrice / 20;
         const modTwenty = totalPrice % 20;
-        if (modTwenty >= 10) {
-          const forTen = modTwenty / 10;
-          const modTen = modTwenty % 10;
+        const forTen = modTwenty / 10;
+        const modTen = modTwenty % 10;
+        const forFive = modTen/5;
+        const modFive = modTen%5;
+        const forTwo = modFive / 2;
+        const modTwo = modFive % 2;
           return (<>
-              <Text>เเบงค์ 20: {Math.floor(forTwenty)}</Text>
-              <Text>เหรียญ 10 บาท :
-              {Math.floor(forTen)} </Text>
-              <Text>เหรียญบาท:{modTen}</Text>
-              </>
+           <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px">
+           {Math.floor(forTwenty) ===0? null:<Text>เเบงค์ 20: {Math.floor(forTwenty)}</Text>}
+           {Math.floor(forTen) ===0? null: <Text>เหรียญ 10 บาท : {Math.floor(forTen)} </Text>}
+           {Math.floor(forFive) ===0? null: <Text>เหรียญ 5 บาท : {Math.floor(forFive)} </Text>}
+           {Math.floor(forTwo) ===0? null: <Text>เหรียญ 2 บาท : {Math.floor(forTwo)} </Text>}
+           {modTwo ===0? null:  <Text>เหรียญ 1 บาท: {modTwo}</Text>}  
+             </Box> </>
             
           );
-        }
-        return (
-        <>
-          <Text>เเบงค์ 20: {Math.floor(forTwenty)}</Text>
-          <Text>เหรียญบาท:{modTwenty}</Text>
-       </>
-        );
       }
-    } else if (totalPrice > 50 && totalPrice < 100) {
+    } else if (totalPrice >= 50 && totalPrice < 100) {
       if (totalPrice % 50 === 0) {
         const forFifty = totalPrice / 50;
-        return <Text>แบงค์ 50: {forFifty}</Text>;
+        return  <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px"><Text>แบงค์ 50: {forFifty}</Text></Box> 
       } else if (totalPrice % 20 === 0) {
         const forTwenty = totalPrice / 20;
-        return <Text>แบงค์ 20: {forTwenty}</Text>;
+        return  <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px"><Text>แบงค์ 20: {forTwenty}</Text></Box>
       } else {
         const forFifty = totalPrice / 50;
         const modFifty = totalPrice % 50;
         const forTwenty = modFifty / 20;
         const modTwenty = modFifty % 20;
-        const forFive = modTwenty/5;
-        const modFive= modTwenty %5;
+        const forTen = modTwenty / 10;
+        const modTen = modTwenty % 10;
+        const forFive = modTen/5;
+        const modFive = modTen%5;
+        const forTwo = modFive / 2;
+        const modTwo = modFive % 2;
 
-        if (modTwenty >= 10) {
-          const forTen = modTwenty / 10;
-          const modTen = modTwenty % 10;
-          return (
+        
+       return (
             <>
           <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px">
-            <Text>
-              เเบงค์ 50: {Math.floor(forFifty)}  </Text>
-              <Text> เเบงค์ 20:{" "}
-              {Math.floor(forTwenty)}</Text>
-              <Text>เหรียญ 10 บาท :{Math.floor(forTen)}{" "}</Text>
-              <Text>เหรียญบาท:{modTen}</Text>
+            {Math.floor(forFifty) ===0? null:<Text>เเบงค์ 50: {Math.floor(forFifty)}  </Text>}
+            {Math.floor(forTwenty) ===0? null:<Text>เเบงค์ 20: {Math.floor(forTwenty)}</Text>}
+            {Math.floor(forTen) ===0? null:<Text>เหรียญ 10 บาท : {Math.floor(forTen)}</Text>}
+            {Math.floor(forFive) ===0? null:<Text>เหรียญ 5 บาท : {Math.floor(forFive)}</Text>}
+            {Math.floor(forTwo) ===0? null: <Text>เหรียญ 2 บาท : {Math.floor(forTwo)}</Text>}
+            {modTwo===0? null:<Text>เหรียญ 1 บาท: {modTwo}</Text>}
           </Box>
           </>
           );
-        }
-        
-        return (
-          <>
-          <Text>
-            เเบงค์ 50: {Math.floor(forFifty)} </Text>
-            <Text>เเบงค์ 20:{Math.floor(forTwenty)}</Text>
-            <Text>เหรียญ 5 บาท:{Math.floor(forFive)}</Text>
-            <Text>เหรียญ บาท: {modFive}</Text>
-         </>
-        );
+   
       }
       
       // price> 100
     } else {
-      
       if(totalPrice%100 === 0){
       const forHundred = totalPrice / 100;
-      return <Text>แบงค์ 100: {forHundred}</Text>;
+      return  <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px"><Text>แบงค์ 100: {forHundred}</Text></Box>
       }
-      else {
+      // else {
         // % ไม่ลงตัวซักอย่าง
         const forHundred = totalPrice / 100;
         const modHundred = totalPrice % 100;
 
 
-        console.log("modHun",modHundred);
-        if (modHundred != 0) {
+        //console.log("modHun",modHundred);
+        // if (modHundred != 0) {
           const forFifty = modHundred / 50;
           const modFifty =  modHundred % 50;
           const forTwenty = modFifty / 20;
           const modTwenty = modFifty % 20;
           const forTen = modTwenty / 10;
-          const modTen = modTwenty % 10;   
-         
-          if(modTen >=5){
-            const forFive = modTen/5;
-            const modFive= modTen %5;
+          const modTen = modTwenty % 10;  
+          const forFive = modTen/5;
+          const modFive= modTen %5;
+          const forTwo = modFive/2;
+          const modTwo = modFive % 2;
             return (<>
-              <Text>แบงค์ 100: {Math.floor(forHundred)}</Text>
-              <Text>เเบงค์ 50: {Math.floor(forFifty)}</Text>
-              <Text> เเบงค์ 20:{Math.floor(forTwenty)}</Text>
-              <Text>เหรียญ 10 บาท :{Math.floor(forTen)}{" "}</Text>
-              <Text>เหรียญ 5 บาท:{Math.floor(forFive)}</Text>
-              <Text>เหรียญ บาท:{modFive}</Text>
+              <Box border="1px solid black" shadow="lg" m={4} p={2} width="300px">
+              {Math.floor(forHundred) ===0? null:<Text>แบงค์ 100: {Math.floor(forHundred)}</Text>}
+              {Math.floor(forFifty) ===0? null:<Text>เเบงค์ 50: {Math.floor(forFifty)}</Text>}
+              {Math.floor(forTwenty) ===0? null:<Text>เเบงค์ 20: {Math.floor(forTwenty)}</Text>}
+              {Math.floor(forTen) ===0? null:<Text>เหรียญ 10 บาท : {Math.floor(forTen)}</Text>}
+              {Math.floor(forFive) ===0? null:<Text>เหรียญ 5 บาท: {Math.floor(forFive)}</Text>}
+              {Math.floor(forTwo) ===0? null:<Text>เหรียญ 2 บาท: {Math.floor(forTwo)}</Text>}
+              {modTwo===0? null:<Text>เหรียญ 1 บาท: {modTwo}</Text>}
+              </Box>
               </>
             );
-          }
-          return (<>
-            <Text>แบงค์ 100: {Math.floor(forHundred)}</Text>
-            <Text>เเบงค์ 50: {Math.floor(forFifty)}</Text>
-            <Text> เเบงค์ 20:{Math.floor(forTwenty)}</Text>
-            <Text>เหรียญ 10 บาท :{Math.floor(forTen)}</Text>
-            <Text>เหรียญ บาท:{modTen}</Text>
-            </>
-          );
-        }
-
-      }
-    
+         
+        // }
+       
+      // }
+     
     }
-
-    return <Text>moneyGuide</Text>;
+ return (<Text>moneyGuide</Text>)
+ 
   }
-
+ 
   const handlerSubmitOrder = async (i) => {
     console.log(i);
     try {
@@ -232,7 +239,10 @@ function Sidebar() {
         orderId: order_id,
       });
       console.log("payment", payment);
+      alert("Success")
       setShowInput(false);
+      const newStation = []
+      setAddStation(newStation);
     } catch (err) {
       console.log(err);
     }
@@ -274,7 +284,7 @@ function Sidebar() {
                   as="samp"
                   color="white"
                 >
-                  ค่าโดยสาร{" "} 
+                  ค่าโดยสาร 
                   </Text>
                   </Flex>
 
